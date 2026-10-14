@@ -1,26 +1,52 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-bg: #090a0c;
+  --color-fg: #f5f5f5;
+  --color-muted: #8f8f8f;
+  --color-subtle: #696969;
+  --color-line: #525252;
+  --color-placeholder: #737373;
+  --color-brand: #ff5a1f;
+  --color-danger: #f26969;
+  --color-gold: #eec239;
+  --color-bronze: #8b4a00;
+  --color-row: #1a1a1a;
+  --color-row-me: #303030;
+  /* F1 timing colours, used only as signals */
+  --color-leader: #b138dd;
+  --color-go: #00d26a;
+  --color-pit: #ffd400;
+  --color-light: #e10600;
+  --font-sans: var(--font-pretendard);
+  --font-num: var(--font-barlow), var(--font-pretendard);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  word-break: keep-all;
+}
+
+/* Home cards: faint orange wash + grey border fading to orange (Figma gradient fill/stroke) */
+.card {
+  border: 1px solid rgb(82 82 82 / 0.6);
+  border-radius: 8px;
+  background: linear-gradient(to left, rgb(255 90 31 / 0.05), rgb(255 90 31 / 0));
+}
+
+/* Race screen: the lap count pops up over the map and fades. */
+@keyframes lap {
+  0% { opacity: 0; transform: scale(1.4); }
+  15% { opacity: 1; transform: scale(1); }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Timing tower: a row that just gained or lost a place. */
+@keyframes gain {
+  from { background-color: rgb(0 210 106 / 0.45); }
+}
+@keyframes lose {
+  from { background-color: rgb(225 6 0 / 0.45); }
 }
